@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://6bea54syixmi"]
+
+[ext_resource type="Script" path="res://Environment/PathFollow3D.gd" id="1_noreu"]
+
+[sub_resource type="Curve3D" id="Curve3D_d63l8"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -5.02626, 0, -3.99484, 0, 0, 0, 0, 0, 0, -5.06213, 0, -14.0753, 0, 0, 0, 0, 0, 0, 3.90629, 0, -14.0395, 0.143496, 0, -0.28699, -0.143496, 0, 0.28699, 3.94216, 0, -4.21008, 0, 0, 0, 0, 0, 0, -5.02626, 0, -3.99484),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0)
+}
+point_count = 5
+
+[node name="Path3D" type="Path3D"]
+curve = SubResource("Curve3D_d63l8")
+
+[node name="PathFollow3D" type="PathFollow3D" parent="."]
+transform = Transform3D(0.999803, 0, 0.0198445, 0, 1, 0, -0.0198445, 0, 0.999803, 0.161685, 0, -4.35271)
+script = ExtResource("1_noreu")

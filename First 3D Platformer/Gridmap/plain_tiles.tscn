@@ -1,0 +1,67 @@
+[gd_scene load_steps=10 format=3 uid="uid://qijvoi6rcpmd"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4p75t"]
+albedo_color = Color(0.596078, 0.796078, 0.890196, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_crp01"]
+material = SubResource("StandardMaterial3D_4p75t")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ax7qp"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bkt7v"]
+albedo_color = Color(0.619608, 0.541176, 0.858824, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_ch5oa"]
+material = SubResource("StandardMaterial3D_bkt7v")
+size = Vector3(2, 1, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_t7m5j"]
+size = Vector3(2, 1, 1)
+
+[sub_resource type="PrismMesh" id="PrismMesh_v46tn"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_rm6oq"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ako33"]
+
+[node name="PlainTiles" type="Node3D"]
+
+[node name="BasicCube" type="Node3D" parent="."]
+
+[node name="Cube" type="MeshInstance3D" parent="BasicCube"]
+mesh = SubResource("BoxMesh_crp01")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="BasicCube/Cube"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BasicCube/Cube/StaticBody3D"]
+shape = SubResource("BoxShape3D_ax7qp")
+
+[node name="Rectangle" type="Node3D" parent="."]
+
+[node name="Rectangle" type="MeshInstance3D" parent="Rectangle"]
+mesh = SubResource("BoxMesh_ch5oa")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Rectangle/Rectangle"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Rectangle/Rectangle/StaticBody3D"]
+shape = SubResource("BoxShape3D_t7m5j")
+
+[node name="Triangle" type="Node3D" parent="."]
+
+[node name="Triangle" type="MeshInstance3D" parent="Triangle"]
+mesh = SubResource("PrismMesh_v46tn")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Triangle/Triangle"]
+
+[node name="CollisionPolygon3D" type="CollisionPolygon3D" parent="Triangle/Triangle/StaticBody3D"]
+polygon = PackedVector2Array(-0.528179, -0.503299, 0.0042976, 0.542466, 0.536775, -0.512894)
+
+[node name="Floor" type="Node3D" parent="."]
+
+[node name="Floor" type="MeshInstance3D" parent="Floor"]
+mesh = SubResource("BoxMesh_rm6oq")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Floor/Floor"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor/Floor/StaticBody3D"]
+shape = SubResource("BoxShape3D_ako33")

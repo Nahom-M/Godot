@@ -1,0 +1,51 @@
+[gd_scene load_steps=10 format=3 uid="uid://dtcn2l71rwsfs"]
+
+[ext_resource type="Script" path="res://Levels/base_level.gd" id="1_lx5mw"]
+[ext_resource type="PackedScene" uid="uid://dmabygu75hoye" path="res://Player/player.tscn" id="1_mbrwv"]
+[ext_resource type="PackedScene" uid="uid://cp16njim0p2j5" path="res://Environment/level_exit.tscn" id="4_7wcls"]
+[ext_resource type="PackedScene" uid="uid://c74c2dl2bnsfp" path="res://Gridmap/grid_map.tscn" id="4_yn38e"]
+[ext_resource type="PackedScene" uid="uid://df0qdq36yoih1" path="res://Environment/death_zone.tscn" id="5_1wdsa"]
+[ext_resource type="PackedScene" uid="uid://bce6t4mc2ltx1" path="res://Menus/pause_menu.tscn" id="6_c6x7d"]
+
+[sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_7kelr"]
+
+[sub_resource type="Sky" id="Sky_y37x2"]
+sky_material = SubResource("PhysicalSkyMaterial_7kelr")
+
+[sub_resource type="Environment" id="Environment_5oyum"]
+background_mode = 2
+sky = SubResource("Sky_y37x2")
+ssil_enabled = true
+sdfgi_enabled = true
+
+[node name="BaseLevel" type="Node3D"]
+script = ExtResource("1_lx5mw")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.398926, -0.782098, 0.478729, -0.746678, 0.0259956, 0.664678, -0.532288, -0.622613, -0.573605, -0.688969, 3.88077, -0.752435)
+light_energy = 2.0
+shadow_enabled = true
+directional_shadow_max_distance = 50.0
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_5oyum")
+
+[node name="Player" parent="." instance=ExtResource("1_mbrwv")]
+collision_layer = 2
+
+[node name="GridMap" parent="." instance=ExtResource("4_yn38e")]
+collision_mask = 0
+metadata/_editor_floor_ = Vector3(0, 0, 0)
+
+[node name="LevelExit" parent="." instance=ExtResource("4_7wcls")]
+
+[node name="DeathZone" parent="." instance=ExtResource("5_1wdsa")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.66617, 0)
+
+[node name="PauseMenu" parent="." instance=ExtResource("6_c6x7d")]
+visible = false
+anchors_preset = 15
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 0.0
+offset_bottom = 0.0

@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://dcdmrxkqoxvsr"]
+
+[ext_resource type="PackedScene" uid="uid://dtcn2l71rwsfs" path="res://Levels/base_level.tscn" id="1_dyqry"]
+[ext_resource type="PackedScene" uid="uid://unvjb75fhyaq" path="res://Environment/path_3d_alt.tscn" id="2_ea3m7"]
+[ext_resource type="PackedScene" uid="uid://b2clq4a7i6ubx" path="res://Environment/moving_block.tscn" id="2_q027c"]
+[ext_resource type="PackedScene" uid="uid://2p4lit74xptf" path="res://Menus/victory_screen.tscn" id="2_yub30"]
+
+[node name="Level5" instance=ExtResource("1_dyqry")]
+
+[node name="Player" parent="." index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.41229, 0)
+
+[node name="GridMap" parent="." index="3"]
+data = {
+"cells": PackedInt32Array(65535, 0, 720899, 65535, 65535, 720899, 0, 65535, 720899, 0, 0, 720899, 0, 10, 720898, 1, 13, 524290, 0, 17, 524288, 0, 21, 1507329, 0, 27, 1507328)
+}
+
+[node name="LevelExit" parent="." index="4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 29.9134)
+nextLevel = ExtResource("2_yub30")
+
+[node name="Path3D" parent="." index="7" instance=ExtResource("2_ea3m7")]
+
+[node name="PathFollow3D" parent="Path3D" index="0"]
+transform = Transform3D(0.00928754, 0, -0.999957, 0, 1, 0, 0.999957, 0, 0.00928754, -8.25843, 0, -4.87563)
+
+[node name="MovingBlock" parent="Path3D/PathFollow3D" index="0" instance=ExtResource("2_q027c")]
+
+[editable path="Path3D"]

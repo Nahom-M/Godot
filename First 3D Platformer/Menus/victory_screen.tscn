@@ -1,0 +1,39 @@
+[gd_scene load_steps=2 format=3 uid="uid://2p4lit74xptf"]
+
+[ext_resource type="Script" path="res://Menus/victory_screen.gd" id="1_lr2ck"]
+
+[node name="VictoryScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_lr2ck")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 290.0
+text = "You Win"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PlayAgain" type="Button" parent="."]
+layout_mode = 0
+offset_left = 471.0
+offset_top = 284.0
+offset_right = 676.0
+offset_bottom = 343.0
+text = "Play Again"
+
+[node name="Quit" type="Button" parent="."]
+layout_mode = 0
+offset_left = 471.0
+offset_top = 399.0
+offset_right = 676.0
+offset_bottom = 458.0
+text = "Quit"
+
+[connection signal="pressed" from="PlayAgain" to="." method="_on_play_again_pressed"]
+[connection signal="pressed" from="Quit" to="." method="_on_quit_pressed"]

@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://bhxqfuab53vgd"]
+
+[ext_resource type="PackedScene" uid="uid://dtcn2l71rwsfs" path="res://Levels/base_level.tscn" id="1_wu56w"]
+[ext_resource type="PackedScene" uid="uid://dcdmrxkqoxvsr" path="res://Levels/level_5.tscn" id="2_axc7m"]
+
+[node name="Level4" instance=ExtResource("1_wu56w")]
+
+[node name="Player" parent="." index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.458538, 1.40406, -0.447958)
+
+[node name="GridMap" parent="." index="3"]
+data = {
+"cells": PackedInt32Array(65535, 65535, 3, 65535, 65532, 2, 65535, 65529, 2, 65532, 65529, 2, 65530, 65526, 1441794, 65532, 65523, 720897, 65535, 65523, 720897, 3, 65523, 720896, 2, 65519, 720898)
+}
+
+[node name="LevelExit" parent="." index="4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -19.3028)
+nextLevel = ExtResource("2_axc7m")
