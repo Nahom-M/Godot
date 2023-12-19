@@ -1,0 +1,137 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://Fonts/Oswald/Oswald-Medium.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://Fonts/Oswald/Oswald-Bold.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://Interface/MainMenu.gd" type="Script" id=3]
+[ext_resource path="res://Assets/Background/SunsetMountains/parallax-mountain-bg.png" type="Texture" id=4]
+[ext_resource path="res://Interface/Explanation.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Interface/Settings.tscn" type="PackedScene" id=6]
+
+[sub_resource type="DynamicFont" id=1]
+size = 70
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=2]
+font_data = ExtResource( 2 )
+
+[sub_resource type="StyleBoxFlat" id=5]
+bg_color = Color( 0.952941, 0.917647, 0.917647, 0.392157 )
+
+[sub_resource type="StyleBoxFlat" id=6]
+bg_color = Color( 0.972549, 0.964706, 0.0588235, 0.392157 )
+
+[sub_resource type="StyleBoxFlat" id=7]
+bg_color = Color( 0, 0.0784314, 1, 0.392157 )
+
+[node name="Menu" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 3 )
+
+[node name="Background" type="TextureRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 4 )
+expand = true
+
+[node name="TopRect" type="VBoxContainer" parent="."]
+margin_right = 512.0
+margin_bottom = 150.0
+alignment = 1
+
+[node name="Title" type="Label" parent="TopRect"]
+margin_top = 22.0
+margin_right = 512.0
+margin_bottom = 127.0
+custom_colors/font_color = Color( 0.670588, 0.145098, 0.145098, 1 )
+custom_fonts/font = SubResource( 1 )
+text = "Game Title"
+align = 1
+valign = 1
+
+[node name="BottomRect" type="VBoxContainer" parent="."]
+margin_left = 150.0
+margin_top = 150.0
+margin_right = 362.0
+margin_bottom = 300.0
+focus_mode = 2
+alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="BottomRect"]
+margin_top = 7.0
+margin_right = 212.0
+margin_bottom = 38.0
+focus_mode = 2
+
+[node name="Start" type="Button" parent="BottomRect/VBoxContainer"]
+margin_right = 212.0
+margin_bottom = 31.0
+focus_neighbour_top = NodePath("../../VBoxContainer4/Exit")
+focus_neighbour_bottom = NodePath("../../VBoxContainer2/Settings")
+custom_fonts/font = SubResource( 2 )
+custom_styles/hover = SubResource( 5 )
+custom_styles/pressed = SubResource( 6 )
+custom_styles/focus = SubResource( 7 )
+text = "Start"
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="BottomRect"]
+margin_top = 42.0
+margin_right = 212.0
+margin_bottom = 73.0
+focus_mode = 2
+
+[node name="Settings" type="Button" parent="BottomRect/VBoxContainer2"]
+margin_right = 212.0
+margin_bottom = 31.0
+focus_neighbour_top = NodePath("../../VBoxContainer/Start")
+focus_neighbour_bottom = NodePath("../../VBoxContainer3/Help")
+custom_fonts/font = SubResource( 2 )
+custom_styles/hover = SubResource( 5 )
+custom_styles/pressed = SubResource( 6 )
+custom_styles/focus = SubResource( 7 )
+text = "Settings"
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="BottomRect"]
+margin_top = 77.0
+margin_right = 212.0
+margin_bottom = 108.0
+focus_mode = 2
+
+[node name="Help" type="Button" parent="BottomRect/VBoxContainer3"]
+margin_right = 212.0
+margin_bottom = 31.0
+focus_neighbour_top = NodePath("../../VBoxContainer2/Settings")
+focus_neighbour_bottom = NodePath("../../VBoxContainer4/Exit")
+custom_fonts/font = SubResource( 2 )
+custom_styles/hover = SubResource( 5 )
+custom_styles/pressed = SubResource( 6 )
+custom_styles/focus = SubResource( 7 )
+text = "Help"
+
+[node name="VBoxContainer4" type="VBoxContainer" parent="BottomRect"]
+margin_top = 112.0
+margin_right = 212.0
+margin_bottom = 143.0
+focus_mode = 2
+
+[node name="Exit" type="Button" parent="BottomRect/VBoxContainer4"]
+margin_right = 212.0
+margin_bottom = 31.0
+focus_neighbour_top = NodePath("../../VBoxContainer3/Help")
+focus_neighbour_bottom = NodePath("../../VBoxContainer/Start")
+custom_fonts/font = SubResource( 2 )
+custom_styles/hover = SubResource( 5 )
+custom_styles/pressed = SubResource( 6 )
+custom_styles/focus = SubResource( 7 )
+text = "Exit"
+
+[node name="Settings" parent="." instance=ExtResource( 6 )]
+
+[node name="Explanation" parent="." instance=ExtResource( 5 )]
+
+[connection signal="pressed" from="BottomRect/VBoxContainer/Start" to="." method="_on_Start_pressed"]
+[connection signal="pressed" from="BottomRect/VBoxContainer2/Settings" to="." method="_on_Settings_pressed"]
+[connection signal="pressed" from="BottomRect/VBoxContainer3/Help" to="." method="_on_Help_pressed"]
+[connection signal="pressed" from="BottomRect/VBoxContainer4/Exit" to="." method="_on_Exit_pressed"]
+
+[editable path="Settings"]

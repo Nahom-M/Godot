@@ -1,0 +1,69 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Interface/HUD.gd" type="Script" id=1]
+[ext_resource path="res://Assets/Other/arrow.png" type="Texture" id=2]
+[ext_resource path="res://Assets/Items/Spells.png" type="Texture" id=3]
+[ext_resource path="res://Interface/PauseMenu.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Assets/Other/Dust Particle.png" type="Texture" id=5]
+
+[node name="HUD" type="CanvasLayer"]
+script = ExtResource( 1 )
+
+[node name="Display" type="Control" parent="."]
+
+[node name="FireballScore" type="RichTextLabel" parent="Display"]
+margin_left = 41.0
+margin_top = 3.0
+margin_right = 65.0
+margin_bottom = 20.0
+text = "-"
+
+[node name="DoubleJumpScore" type="RichTextLabel" parent="Display"]
+margin_left = 91.0
+margin_top = 3.0
+margin_right = 115.0
+margin_bottom = 20.0
+text = "-"
+
+[node name="Fireball" type="Sprite" parent="Display"]
+position = Vector2( 22.25, 15 )
+scale = Vector2( 0.511765, 0.451613 )
+texture = ExtResource( 3 )
+vframes = 10
+region_enabled = true
+region_rect = Rect2( -2, 15, 75, 621 )
+
+[node name="DoubleJump" type="Sprite" parent="Display"]
+position = Vector2( 72.9446, 9.44457 )
+rotation = 0.785398
+scale = Vector2( 0.0973682, 0.11875 )
+texture = ExtResource( 2 )
+
+[node name="DoubleJump2" type="Sprite" parent="Display"]
+position = Vector2( 81.7343, 9.23435 )
+rotation = 0.785398
+scale = Vector2( 0.100498, 0.11875 )
+texture = ExtResource( 2 )
+
+[node name="HealthMissing" type="TextureRect" parent="Display"]
+modulate = Color( 0.0509804, 0.0470588, 0.0470588, 1 )
+margin_left = 119.0
+margin_top = 2.0
+margin_right = 164.0
+margin_bottom = 17.0
+texture = ExtResource( 5 )
+expand = true
+stretch_mode = 2
+
+[node name="Health" type="TextureRect" parent="Display"]
+margin_left = 119.0
+margin_top = 2.0
+margin_right = 134.0
+margin_bottom = 17.0
+grow_horizontal = 2
+texture = ExtResource( 5 )
+expand = true
+stretch_mode = 2
+
+[node name="PauseMenu" parent="." instance=ExtResource( 4 )]
+visible = false

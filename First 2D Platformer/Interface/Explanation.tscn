@@ -1,0 +1,192 @@
+[gd_scene load_steps=16 format=2]
+
+[ext_resource path="res://Assets/Enemies/Chicken/Hit (32x34).png" type="Texture" id=1]
+[ext_resource path="res://Fonts/BubblegumSans/BubblegumSans-Regular.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://Assets/Items/Spells.png" type="Texture" id=3]
+[ext_resource path="res://Assets/Items/Checkpoints/Checkpoint/Checkpoint (Flag Idle)(64x64).png" type="Texture" id=4]
+[ext_resource path="res://Assets/Items/Fruits/Orange.png" type="Texture" id=5]
+[ext_resource path="res://Assets/Items/Fruits/Apple.png" type="Texture" id=6]
+[ext_resource path="res://Assets/Items/Checkpoints/End/End (Idle).png" type="Texture" id=7]
+[ext_resource path="res://Assets/Other/wasd.png" type="Texture" id=8]
+[ext_resource path="res://Assets/Other/keys.png" type="Texture" id=9]
+[ext_resource path="res://Assets/Other/arrow.png" type="Texture" id=10]
+
+[sub_resource type="DynamicFont" id=1]
+size = 14
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 14
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 14
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 14
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=5]
+font_data = ExtResource( 2 )
+
+[node name="Explanation" type="Popup"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.152941, 0.129412, 0.129412, 1 )
+
+[node name="Label" type="Label" parent="."]
+margin_left = 32.0
+margin_top = 16.0
+margin_right = 176.0
+margin_bottom = 53.0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 1 )
+text = "- Use the WASD buttons
+to move the player around."
+
+[node name="Label2" type="Label" parent="."]
+margin_left = 272.0
+margin_top = 16.0
+margin_right = 496.0
+margin_bottom = 73.0
+custom_fonts/font = SubResource( 2 )
+text = "- Press the spacebar to shoot out fireballs 
+and you can double jump 
+in this game but these are limited resources."
+
+[node name="Label3" type="Label" parent="."]
+margin_left = 32.0
+margin_top = 113.0
+margin_right = 192.0
+margin_bottom = 150.0
+custom_fonts/font = SubResource( 3 )
+text = "- Pickup fruits to gain more 
+fireballs and double jumps."
+
+[node name="Label4" type="Label" parent="."]
+margin_left = 32.0
+margin_top = 177.0
+margin_right = 224.0
+margin_bottom = 254.0
+custom_fonts/font = SubResource( 4 )
+text = "- A majority of the enemies kill
+ you in one hit but you can also kill 
+most enemies with fireballs,
+ though the amount needed varies."
+
+[node name="Label5" type="Label" parent="."]
+margin_left = 272.0
+margin_top = 144.0
+margin_right = 448.0
+margin_bottom = 229.0
+custom_fonts/font = SubResource( 5 )
+text = "- To complete the level you
+ must reach the trophy, 
+but don't worry there are also
+ platforms to help you out."
+
+[node name="Sprites" type="YSort" parent="."]
+
+[node name="Apple" type="Sprite" parent="Sprites"]
+position = Vector2( 192, 129 )
+texture = ExtResource( 6 )
+hframes = 23
+
+[node name="Orange" type="Sprite" parent="Sprites"]
+position = Vector2( 16, 129 )
+texture = ExtResource( 5 )
+hframes = 23
+frame = 6
+
+[node name="Fireball" type="Sprite" parent="Sprites"]
+position = Vector2( 32, 283 )
+scale = Vector2( 1, 0.692771 )
+texture = ExtResource( 3 )
+hframes = 10
+vframes = 10
+
+[node name="Fireball2" type="Sprite" parent="Sprites"]
+position = Vector2( 454, 96 )
+scale = Vector2( 1, 0.692771 )
+texture = ExtResource( 3 )
+hframes = 10
+vframes = 10
+
+[node name="DoubleJump" type="Sprite" parent="Sprites"]
+position = Vector2( 451.258, 125.679 )
+rotation = 0.785398
+scale = Vector2( 0.246, 0.277 )
+texture = ExtResource( 10 )
+
+[node name="DoubleJump2" type="Sprite" parent="Sprites"]
+position = Vector2( 468.799, 126.262 )
+rotation = 0.785398
+scale = Vector2( 0.245975, 0.277473 )
+texture = ExtResource( 10 )
+
+[node name="Chicken" type="Sprite" parent="Sprites"]
+position = Vector2( 160, 272 )
+texture = ExtResource( 1 )
+
+[node name="Checkpoint(FlagIdle)(64X64)" type="Sprite" parent="Sprites"]
+position = Vector2( 320, 257 )
+texture = ExtResource( 4 )
+hframes = 10
+
+[node name="End(Idle)" type="Sprite" parent="Sprites"]
+position = Vector2( 400, 256 )
+texture = ExtResource( 7 )
+
+[node name="WASD" type="Sprite" parent="Sprites"]
+position = Vector2( 96, 80 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 8 )
+region_enabled = true
+region_rect = Rect2( 3, 37, 150, 94 )
+
+[node name="Spacebar" type="Sprite" parent="Sprites"]
+position = Vector2( 304, 96 )
+scale = Vector2( 0.630619, 0.55102 )
+texture = ExtResource( 9 )
+region_enabled = true
+region_rect = Rect2( 424, 207, 89, 49 )
+
+[node name="Arrow" type="Sprite" parent="Sprites"]
+modulate = Color( 0, 0, 0, 1 )
+position = Vector2( 384, 96 )
+rotation = 1.5708
+scale = Vector2( 0.217774, 0.475527 )
+texture = ExtResource( 10 )
+
+[node name="Arrow2" type="Sprite" parent="Sprites"]
+modulate = Color( 0, 0, 0, 1 )
+position = Vector2( 384, 128 )
+rotation = 1.5708
+scale = Vector2( 0.217774, 0.475527 )
+texture = ExtResource( 10 )
+
+[node name="WKey" type="Sprite" parent="Sprites"]
+position = Vector2( 336, 128 )
+scale = Vector2( 0.583333, 0.604167 )
+texture = ExtResource( 8 )
+region_enabled = true
+region_rect = Rect2( 58, 37, 41, 45 )
+
+[node name="MultiplySign" type="Sprite" parent="Sprites"]
+position = Vector2( 301, 128 )
+scale = Vector2( 0.833333, 0.833333 )
+texture = ExtResource( 9 )
+region_enabled = true
+region_rect = Rect2( 332, 216, 24, 28 )
+
+[node name="2" type="Sprite" parent="Sprites"]
+position = Vector2( 266, 128 )
+scale = Vector2( 0.583333, 0.604167 )
+texture = ExtResource( 9 )
+region_enabled = true
+region_rect = Rect2( 288, 52, 48, 48 )

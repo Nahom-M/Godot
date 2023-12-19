@@ -1,0 +1,111 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://Fonts/BubblegumSans/BubblegumSans-Regular.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://Interface/PauseMenu.gd" type="Script" id=2]
+[ext_resource path="res://Interface/Settings.tscn" type="PackedScene" id=3]
+
+[sub_resource type="DynamicFont" id=2]
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=1]
+font_data = ExtResource( 1 )
+
+[sub_resource type="StyleBoxFlat" id=5]
+bg_color = Color( 0.0196078, 0.0431373, 0.447059, 1 )
+
+[sub_resource type="StyleBoxFlat" id=8]
+bg_color = Color( 0.34902, 0.34902, 0.0431373, 1 )
+
+[sub_resource type="StyleBoxFlat" id=9]
+bg_color = Color( 0.0313726, 0.054902, 0.309804, 0.392157 )
+
+[sub_resource type="StyleBoxFlat" id=4]
+bg_color = Color( 0.0156863, 0.145098, 0.458824, 1 )
+
+[sub_resource type="StyleBoxFlat" id=6]
+bg_color = Color( 0.462745, 0.45098, 0.101961, 1 )
+
+[sub_resource type="StyleBoxFlat" id=7]
+bg_color = Color( 0.0431373, 0.0862745, 0.32549, 0.392157 )
+
+[node name="PauseMenu" type="Control"]
+pause_mode = 2
+script = ExtResource( 2 )
+
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_left = 150.0
+margin_top = 25.0
+margin_right = 362.0
+margin_bottom = 275.0
+color = Color( 0.168627, 0.168627, 0.192157, 0.392157 )
+
+[node name="TopRect" type="VBoxContainer" parent="."]
+margin_left = 150.0
+margin_top = 25.0
+margin_right = 362.0
+margin_bottom = 137.0
+focus_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+alignment = 1
+
+[node name="Label" type="Label" parent="TopRect"]
+margin_top = 46.0
+margin_right = 212.0
+margin_bottom = 65.0
+custom_fonts/font = SubResource( 2 )
+text = "PAUSED"
+align = 1
+valign = 1
+
+[node name="BottomRect" type="VBoxContainer" parent="."]
+margin_left = 200.0
+margin_top = 120.0
+margin_right = 312.0
+margin_bottom = 231.0
+focus_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+alignment = 1
+
+[node name="Resume" type="Button" parent="BottomRect"]
+margin_top = 14.0
+margin_right = 112.0
+margin_bottom = 39.0
+focus_neighbour_top = NodePath("../MainMenu")
+focus_neighbour_bottom = NodePath("../Settings")
+custom_fonts/font = SubResource( 1 )
+custom_styles/hover = SubResource( 5 )
+custom_styles/pressed = SubResource( 8 )
+custom_styles/focus = SubResource( 9 )
+text = "Resume"
+
+[node name="Settings" type="Button" parent="BottomRect"]
+margin_top = 43.0
+margin_right = 112.0
+margin_bottom = 68.0
+focus_neighbour_top = NodePath("../Resume")
+focus_neighbour_bottom = NodePath("../MainMenu")
+custom_fonts/font = SubResource( 1 )
+custom_styles/hover = SubResource( 5 )
+custom_styles/pressed = SubResource( 8 )
+custom_styles/focus = SubResource( 9 )
+text = "Settings"
+
+[node name="MainMenu" type="Button" parent="BottomRect"]
+margin_top = 72.0
+margin_right = 112.0
+margin_bottom = 97.0
+focus_neighbour_top = NodePath("../Settings")
+focus_neighbour_bottom = NodePath("../Resume")
+custom_fonts/font = SubResource( 1 )
+custom_styles/hover = SubResource( 4 )
+custom_styles/pressed = SubResource( 6 )
+custom_styles/focus = SubResource( 7 )
+text = "Main Menu"
+
+[node name="Settings" parent="." instance=ExtResource( 3 )]
+
+[connection signal="pressed" from="BottomRect/Resume" to="." method="_on_Resume_pressed"]
+[connection signal="pressed" from="BottomRect/Settings" to="." method="_on_Settings_pressed"]
+[connection signal="pressed" from="BottomRect/MainMenu" to="." method="_on_MainMenu_pressed"]

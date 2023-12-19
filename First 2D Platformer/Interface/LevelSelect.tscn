@@ -1,0 +1,271 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://Fonts/BubblegumSans/BubblegumSans-Regular.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://Interface/LevelSelect.gd" type="Script" id=2]
+[ext_resource path="res://Assets/Background/SunsetMountains/parallax-mountain-bg.png" type="Texture" id=3]
+
+[sub_resource type="DynamicFont" id=1]
+size = 50
+font_data = ExtResource( 1 )
+
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 0.952941, 0.917647, 0.917647, 0.392157 )
+
+[sub_resource type="StyleBoxFlat" id=3]
+bg_color = Color( 0.972549, 0.964706, 0.0588235, 0.392157 )
+
+[sub_resource type="StyleBoxFlat" id=4]
+bg_color = Color( 0, 0.0784314, 1, 0.392157 )
+
+[node name="LevelSelect" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 2 )
+
+[node name="ColorRect" type="TextureRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 3 )
+expand = true
+
+[node name="Levels1to5" type="HBoxContainer" parent="."]
+margin_left = 55.0
+margin_top = 35.0
+margin_right = 455.0
+margin_bottom = 135.0
+focus_mode = 2
+alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Levels1to5"]
+margin_right = 76.0
+margin_bottom = 100.0
+focus_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="level1" type="Button" parent="Levels1to5/HBoxContainer"]
+margin_right = 76.0
+margin_bottom = 100.0
+focus_neighbour_right = NodePath("../../HBoxContainer2/level2")
+focus_neighbour_bottom = NodePath("../../../Levels6to10/HBoxContainer/level6")
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = SubResource( 1 )
+custom_styles/hover = SubResource( 2 )
+custom_styles/pressed = SubResource( 3 )
+custom_styles/focus = SubResource( 4 )
+text = "1"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Levels1to5"]
+margin_left = 80.0
+margin_right = 157.0
+margin_bottom = 100.0
+focus_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="level2" type="Button" parent="Levels1to5/HBoxContainer2"]
+margin_right = 77.0
+margin_bottom = 100.0
+focus_neighbour_left = NodePath("../../HBoxContainer/level1")
+focus_neighbour_right = NodePath("../../HBoxContainer3/level3")
+focus_neighbour_bottom = NodePath("../../../Levels6to10/HBoxContainer2/level7")
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = SubResource( 1 )
+custom_styles/hover = SubResource( 2 )
+custom_styles/pressed = SubResource( 3 )
+custom_styles/focus = SubResource( 4 )
+text = "2"
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="Levels1to5"]
+margin_left = 161.0
+margin_right = 238.0
+margin_bottom = 100.0
+focus_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="level3" type="Button" parent="Levels1to5/HBoxContainer3"]
+margin_right = 77.0
+margin_bottom = 100.0
+focus_neighbour_left = NodePath("../../HBoxContainer2/level2")
+focus_neighbour_right = NodePath("../../HBoxContainer4/level4")
+focus_neighbour_bottom = NodePath("../../../Levels6to10/HBoxContainer3/level8")
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = SubResource( 1 )
+custom_styles/hover = SubResource( 2 )
+custom_styles/pressed = SubResource( 3 )
+custom_styles/focus = SubResource( 4 )
+text = "3"
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="Levels1to5"]
+margin_left = 242.0
+margin_right = 319.0
+margin_bottom = 100.0
+focus_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="level4" type="Button" parent="Levels1to5/HBoxContainer4"]
+margin_right = 77.0
+margin_bottom = 100.0
+focus_neighbour_left = NodePath("../../HBoxContainer3/level3")
+focus_neighbour_right = NodePath("../../HBoxContainer5/level5")
+focus_neighbour_bottom = NodePath("../../../Levels6to10/HBoxContainer4/level9")
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = SubResource( 1 )
+custom_styles/hover = SubResource( 2 )
+custom_styles/pressed = SubResource( 3 )
+custom_styles/focus = SubResource( 4 )
+text = "4"
+
+[node name="HBoxContainer5" type="HBoxContainer" parent="Levels1to5"]
+margin_left = 323.0
+margin_right = 400.0
+margin_bottom = 100.0
+focus_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="level5" type="Button" parent="Levels1to5/HBoxContainer5"]
+margin_right = 77.0
+margin_bottom = 100.0
+focus_neighbour_left = NodePath("../../HBoxContainer4/level4")
+focus_neighbour_bottom = NodePath("../../../Levels6to10/HBoxContainer5/level10")
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = SubResource( 1 )
+custom_styles/hover = SubResource( 2 )
+custom_styles/pressed = SubResource( 3 )
+custom_styles/focus = SubResource( 4 )
+text = "5"
+
+[node name="Levels6to10" type="HBoxContainer" parent="."]
+margin_left = 55.0
+margin_top = 165.0
+margin_right = 455.0
+margin_bottom = 265.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Levels6to10"]
+margin_right = 76.0
+margin_bottom = 100.0
+focus_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="level6" type="Button" parent="Levels6to10/HBoxContainer"]
+margin_right = 76.0
+margin_bottom = 100.0
+focus_neighbour_top = NodePath("../../../Levels1to5/HBoxContainer/level1")
+focus_neighbour_right = NodePath("../../HBoxContainer2/level7")
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = SubResource( 1 )
+custom_styles/hover = SubResource( 2 )
+custom_styles/pressed = SubResource( 3 )
+custom_styles/focus = SubResource( 4 )
+text = "6"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Levels6to10"]
+margin_left = 80.0
+margin_right = 157.0
+margin_bottom = 100.0
+focus_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="level7" type="Button" parent="Levels6to10/HBoxContainer2"]
+margin_right = 77.0
+margin_bottom = 100.0
+focus_neighbour_left = NodePath("../../HBoxContainer/level6")
+focus_neighbour_top = NodePath("../../../Levels1to5/HBoxContainer2/level2")
+focus_neighbour_right = NodePath("../../HBoxContainer3/level8")
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = SubResource( 1 )
+custom_styles/hover = SubResource( 2 )
+custom_styles/pressed = SubResource( 3 )
+custom_styles/focus = SubResource( 4 )
+text = "7"
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="Levels6to10"]
+margin_left = 161.0
+margin_right = 238.0
+margin_bottom = 100.0
+focus_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="level8" type="Button" parent="Levels6to10/HBoxContainer3"]
+margin_right = 77.0
+margin_bottom = 100.0
+focus_neighbour_left = NodePath("../../HBoxContainer2/level7")
+focus_neighbour_top = NodePath("../../../Levels1to5/HBoxContainer3/level3")
+focus_neighbour_right = NodePath("../../HBoxContainer4/level9")
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = SubResource( 1 )
+custom_styles/hover = SubResource( 2 )
+custom_styles/pressed = SubResource( 3 )
+custom_styles/focus = SubResource( 4 )
+text = "8"
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="Levels6to10"]
+margin_left = 242.0
+margin_right = 319.0
+margin_bottom = 100.0
+focus_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="level9" type="Button" parent="Levels6to10/HBoxContainer4"]
+margin_right = 77.0
+margin_bottom = 100.0
+focus_neighbour_left = NodePath("../../HBoxContainer3/level8")
+focus_neighbour_top = NodePath("../../../Levels1to5/HBoxContainer4/level4")
+focus_neighbour_right = NodePath("../../HBoxContainer5/level10")
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = SubResource( 1 )
+custom_styles/hover = SubResource( 2 )
+custom_styles/pressed = SubResource( 3 )
+custom_styles/focus = SubResource( 4 )
+text = "9"
+
+[node name="HBoxContainer5" type="HBoxContainer" parent="Levels6to10"]
+margin_left = 323.0
+margin_right = 400.0
+margin_bottom = 100.0
+focus_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="level10" type="Button" parent="Levels6to10/HBoxContainer5"]
+margin_right = 77.0
+margin_bottom = 100.0
+focus_neighbour_left = NodePath("../../HBoxContainer4/level9")
+focus_neighbour_top = NodePath("../../../Levels1to5/HBoxContainer5/level5")
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = SubResource( 1 )
+custom_styles/hover = SubResource( 2 )
+custom_styles/pressed = SubResource( 3 )
+custom_styles/focus = SubResource( 4 )
+text = "10"
+
+[connection signal="pressed" from="Levels1to5/HBoxContainer/level1" to="." method="_on_level1_pressed"]
+[connection signal="pressed" from="Levels1to5/HBoxContainer2/level2" to="." method="_on_level2_pressed"]
+[connection signal="pressed" from="Levels1to5/HBoxContainer3/level3" to="." method="_on_level3_pressed"]
+[connection signal="pressed" from="Levels1to5/HBoxContainer4/level4" to="." method="_on_level4_pressed"]
+[connection signal="pressed" from="Levels1to5/HBoxContainer5/level5" to="." method="_on_level5_pressed"]
+[connection signal="pressed" from="Levels6to10/HBoxContainer/level6" to="." method="_on_level6_pressed"]
+[connection signal="pressed" from="Levels6to10/HBoxContainer2/level7" to="." method="_on_level7_pressed"]
+[connection signal="pressed" from="Levels6to10/HBoxContainer3/level8" to="." method="_on_level8_pressed"]
+[connection signal="pressed" from="Levels6to10/HBoxContainer4/level9" to="." method="_on_level9_pressed"]
+[connection signal="pressed" from="Levels6to10/HBoxContainer5/level10" to="." method="_on_level10_pressed"]

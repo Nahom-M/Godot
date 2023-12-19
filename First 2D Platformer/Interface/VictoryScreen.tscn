@@ -1,0 +1,18 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Interface/VictoryScreen.gd" type="Script" id=1]
+
+[node name="Control" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+
+[node name="Label" type="Label" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+text = "Yay you did it, but as you can see I ran out of budget for this part so like yeah your gonna have to hard reset but honestly this isn't that bad for a first game though. Ngl I did rush the hell out of the final 4 levels but I hope it wasn't too bad of an experience.
+
+Press Space/Enter to return to the main menu."
+align = 1
+valign = 1
+autowrap = true
