@@ -1,0 +1,40 @@
+[gd_scene load_steps=5 format=3 uid="uid://dybnl26dhs2t2"]
+
+[ext_resource type="Script" path="res://Enemies/guard.gd" id="1_lra4k"]
+[ext_resource type="Texture2D" uid="uid://cuoh1b67he7rp" path="res://assets/lilprince300.png" id="2_woib4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_refki"]
+size = Vector2(14.6667, 29.3333)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_mwp1j"]
+radius = 249.365
+
+[node name="Guard" type="CharacterBody2D"]
+modulate = Color(1, 0.223529, 0.172549, 1)
+scale = Vector2(0.75, 0.75)
+collision_layer = 4
+script = ExtResource("1_lra4k")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_woib4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.666667, 33.3333)
+shape = SubResource("RectangleShape2D_refki")
+
+[node name="PlayerDetection" type="Area2D" parent="."]
+position = Vector2(0, 32)
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetection"]
+shape = SubResource("CircleShape2D_mwp1j")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+autostart = true
+
+[connection signal="body_entered" from="PlayerDetection" to="." method="_on_player_detection_body_entered"]
+[connection signal="body_exited" from="PlayerDetection" to="." method="_on_player_detection_body_exited"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -1,0 +1,44 @@
+[gd_scene load_steps=6 format=3 uid="uid://dl2yqmguw60vr"]
+
+[ext_resource type="Script" path="res://Npc/npc.gd" id="1_6qjtw"]
+[ext_resource type="Texture2D" uid="uid://y1sehwmf7b6j" path="res://icon.svg" id="1_kstjf"]
+[ext_resource type="FontFile" uid="uid://qls4o1kv5id7" path="res://Fonts/AlfaSlabOne-Regular.ttf" id="3_igcs2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d3mff"]
+size = Vector2(56, 48)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_pjose"]
+radius = 320.0
+
+[node name="NPC" type="CharacterBody2D"]
+scale = Vector2(0.25, 0.25)
+collision_layer = 16
+collision_mask = 32
+script = ExtResource("1_6qjtw")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_kstjf")
+
+[node name="label" type="Label" parent="."]
+visible = false
+offset_left = -48.0
+offset_top = -108.0
+offset_right = 48.0
+offset_bottom = -85.0
+theme_override_fonts/font = ExtResource("3_igcs2")
+theme_override_font_sizes/font_size = 30
+text = "E"
+horizontal_alignment = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_d3mff")
+
+[node name="PlayerDetection" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetection"]
+shape = SubResource("CircleShape2D_pjose")
+
+[connection signal="body_entered" from="PlayerDetection" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="PlayerDetection" to="." method="_on_player_detection_body_exited"]

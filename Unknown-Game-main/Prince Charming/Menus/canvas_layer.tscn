@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://br3omyc5l7sfq"]
+
+[ext_resource type="PackedScene" uid="uid://ch6fcb3hle5kg" path="res://Menus/merchant_menu.tscn" id="1_20kk6"]
+[ext_resource type="Script" path="res://Menus/canvas_layer.gd" id="1_uqhh8"]
+[ext_resource type="FontFile" uid="uid://qls4o1kv5id7" path="res://Fonts/AlfaSlabOne-Regular.ttf" id="2_sivfm"]
+
+[node name="CanvasLayer" type="CanvasLayer"]
+script = ExtResource("1_uqhh8")
+
+[node name="CoinLabel" type="Label" parent="."]
+offset_left = 5.0
+offset_right = 61.0
+offset_bottom = 32.0
+theme_override_fonts/font = ExtResource("2_sivfm")
+
+[node name="MerchantMenu" parent="." instance=ExtResource("1_20kk6")]
+visible = false
+offset_left = 3.0
+offset_top = -3.0
+offset_right = 3.0
+offset_bottom = -3.0
