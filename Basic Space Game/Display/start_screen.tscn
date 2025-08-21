@@ -1,0 +1,74 @@
+[gd_scene load_steps=7 format=3 uid="uid://dermp5s70wfar"]
+
+[ext_resource type="Texture2D" uid="uid://b17o03ceymdlj" path="res://Assets/start-screen.png" id="1_hts0r"]
+[ext_resource type="Script" uid="uid://dg7d8byvhfg78" path="res://Display/start_screen.gd" id="1_tvitm"]
+[ext_resource type="AudioStream" uid="uid://bhafpf3bk8c8o" path="res://Music/select.wav" id="3_aaf0x"]
+[ext_resource type="AudioStream" uid="uid://cuhbn4y4s1deb" path="res://Music/Walen - Dark Heart (freetouse.com).mp3" id="4_na1fx"]
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_4cdp7"]
+color = Color(0.737255, 0.768627, 0.886275, 1)
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_tnjb2"]
+color = Color(0.737255, 0.768627, 0.886275, 1)
+
+[node name="StartScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_tvitm")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_hts0r")
+
+[node name="Start" type="Button" parent="."]
+layout_mode = 0
+offset_left = 192.0
+offset_top = 512.0
+offset_right = 384.0
+offset_bottom = 576.0
+focus_neighbor_left = NodePath("../Credits")
+focus_neighbor_right = NodePath("../Credits")
+theme_override_styles/hover = SubResource("StyleBoxLine_4cdp7")
+text = "Start"
+
+[node name="Credits" type="Button" parent="."]
+layout_mode = 0
+offset_left = 768.0
+offset_top = 512.0
+offset_right = 960.0
+offset_bottom = 576.0
+focus_neighbor_left = NodePath("../Start")
+focus_neighbor_right = NodePath("../Start")
+theme_override_styles/hover = SubResource("StyleBoxLine_tnjb2")
+text = "Credits"
+
+[node name="MuteButton" type="TextureButton" parent="."]
+layout_mode = 1
+offset_left = 15.0
+offset_top = 15.0
+offset_right = 15.0
+offset_bottom = 15.0
+scale = Vector2(0.1, 0.1)
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_aaf0x")
+volume_db = 5.0
+
+[node name="Dark Heart by Walen" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_na1fx")
+autoplay = true
+
+[connection signal="focus_entered" from="Start" to="." method="_on_start_focus_entered"]
+[connection signal="pressed" from="Start" to="." method="_on_start_pressed"]
+[connection signal="focus_entered" from="Credits" to="." method="_on_credits_focus_entered"]
+[connection signal="pressed" from="Credits" to="." method="_on_credits_pressed"]
+[connection signal="pressed" from="MuteButton" to="." method="_on_mute_button_pressed"]

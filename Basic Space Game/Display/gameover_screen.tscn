@@ -1,0 +1,74 @@
+[gd_scene load_steps=6 format=3 uid="uid://cs01he61pgh4i"]
+
+[ext_resource type="Script" uid="uid://cl1ubnp3kshuh" path="res://Display/gameover_screen.gd" id="1_5mdxr"]
+[ext_resource type="Texture2D" uid="uid://b17o03ceymdlj" path="res://Assets/start-screen.png" id="2_j7xq0"]
+[ext_resource type="AudioStream" uid="uid://cx1v0v5mv3tca" path="res://Music/gameover.wav" id="3_5y4di"]
+[ext_resource type="AudioStream" uid="uid://bhafpf3bk8c8o" path="res://Music/select.wav" id="3_nlxtc"]
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_mep4m"]
+color = Color(0.270588, 0.619608, 0.847059, 1)
+
+[node name="GameoverScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_5mdxr")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_j7xq0")
+
+[node name="Gameover" type="Label" parent="."]
+layout_mode = 0
+offset_left = 710.0
+offset_top = 504.0
+offset_right = 966.0
+offset_bottom = 577.0
+text = "Game Over
+Highscore:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Score" type="Label" parent="."]
+layout_mode = 0
+offset_left = 710.0
+offset_top = 560.0
+offset_right = 966.0
+offset_bottom = 633.0
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Retry" type="Button" parent="."]
+layout_mode = 0
+offset_left = 192.0
+offset_top = 512.0
+offset_right = 384.0
+offset_bottom = 576.0
+theme_override_styles/hover = SubResource("StyleBoxLine_mep4m")
+text = "Retry"
+
+[node name="MuteButton" type="TextureButton" parent="."]
+offset_left = 15.0
+offset_top = 15.0
+offset_right = 15.0
+offset_bottom = 15.0
+scale = Vector2(0.1, 0.1)
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_5y4di")
+
+[node name="AudioStreamPlayer2DSelect" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_nlxtc")
+volume_db = 5.0
+
+[connection signal="focus_entered" from="Retry" to="." method="_on_retry_focus_entered"]
+[connection signal="pressed" from="Retry" to="." method="_on_retry_pressed"]
+[connection signal="pressed" from="MuteButton" to="." method="_on_mute_button_pressed"]

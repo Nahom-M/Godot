@@ -1,0 +1,142 @@
+[gd_scene load_steps=15 format=3 uid="uid://cil6gyofg128j"]
+
+[ext_resource type="Texture2D" uid="uid://b3ks1xffksohs" path="res://Assets/ship-a/ship-a1.png" id="1_8im7p"]
+[ext_resource type="Script" uid="uid://cs8qelt5cxgum" path="res://Player/player.gd" id="1_gekby"]
+[ext_resource type="Texture2D" uid="uid://rowaujq3vic7" path="res://Assets/ship-a/ship-a2.png" id="2_hxhy3"]
+[ext_resource type="Texture2D" uid="uid://dj5puudv2srpx" path="res://Assets/ship-a/ship-a3.png" id="3_ak0e3"]
+[ext_resource type="AudioStream" uid="uid://bw4yynv5lw7r8" path="res://Music/hurt.wav" id="5_k53q1"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3y1x4"]
+atlas = ExtResource("1_8im7p")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jyv3l"]
+atlas = ExtResource("1_8im7p")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ny8dx"]
+atlas = ExtResource("2_hxhy3")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kh4rv"]
+atlas = ExtResource("3_ak0e3")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_lt22x"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3y1x4")
+}],
+"loop": true,
+"name": &"Default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jyv3l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ny8dx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kh4rv")
+}],
+"loop": true,
+"name": &"Move",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uocuv"]
+size = Vector2(18, 29)
+
+[sub_resource type="Animation" id="Animation_yp3ya"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Hurtbox/CollisionPolygon2D:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_rm3f4"]
+resource_name = "hurt"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Hurtbox/CollisionPolygon2D:disabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.5, 0.6, 0.7, 0.8, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [true, false, true, false, true, false, true, false, true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_hclan"]
+_data = {
+&"RESET": SubResource("Animation_yp3ya"),
+&"hurt": SubResource("Animation_rm3f4")
+}
+
+[node name="Player" type="CharacterBody2D"]
+scale = Vector2(2, 2)
+collision_mask = 0
+script = ExtResource("1_gekby")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_lt22x")
+animation = &"Default"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 2.5)
+shape = SubResource("RectangleShape2D_uocuv")
+
+[node name="Hurtbox" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Hurtbox"]
+polygon = PackedVector2Array(-7, -11.5, 7, -11.5, 7, -4, 16.5, 4.5, 17, 13, 13, 13, 8.5, 9, 4, 16.5, -3.5, 16.5, -9, 9.5, -12, 13, -16.5, 13, -17, 5.5, -7, -4)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_hclan")
+}
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_k53q1")
+volume_db = 5.0
+
+[connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]
